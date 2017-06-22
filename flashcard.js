@@ -98,7 +98,7 @@ function tester(){
     		]).then(function(info) {
     			
     			//correct answer updates wins, count and does a recursive callback
-    			if(info.answer == basicArr[temp+1]){
+    			if(info.answer.toLowerCase() == basicArr[temp+1].toLowerCase()){
     				console.log("Correct!");
     				wins++;
     				//update i by 6, the number of lines in the log.txt file with the next question
