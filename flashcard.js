@@ -69,10 +69,14 @@ function ClozeCard(text,clozeArg){
 	};
 }
 
+function newGame(){
+	console.log("new game?");
+}
 //function that prompts user for their basic quesitons recursively
 function tester(){
 
 	fs.readFile("log.txt", "utf8", function(error, data) {
+
 
 		// If the code experiences any errors it will log the error to the console.
 		if (error) {
@@ -81,7 +85,7 @@ function tester(){
 
 		//create an array for the basic questions
 		var basicArr = data.split("\n");
-		
+		questions = ((basicArr.length-1)/2);
 		//uses a global variable of i to traverse through the basic array 
 		if(i<basicArr.length){
 			//save our temp value
@@ -119,9 +123,13 @@ function tester(){
     		});
 
     	}
-    	
+    	if(count == questions){
+    		console.log("You got " + wins + " questions correct out of " + questions);
+    	}
 
 	});
+
+	
 
 }
 
@@ -324,8 +332,6 @@ function blankSlate(){
 			getClozeQuestions();
 		}
 	});
-
-	
 
 }
 
