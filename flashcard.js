@@ -388,12 +388,12 @@ function start(){
 
 function initialLoad() {
 	process.stdout.write('\033c');
-    console.log(" 	 			*_________________________*");
-    console.log("				|                         |");
-    console.log("				|     Welcome to  the     |");
-    console.log("				|   Flashcard Generator   |");
-    console.log("				|  created by Mike Russo  |");
-    console.log("				*_________________________*");
+    console.log(" 	 			_______________________________");
+    console.log("				                               ");
+    console.log("				       Welcome to  the         ");
+    console.log("				      Flashcard Generator      ");
+    console.log("				     created by Mike Russo     ");
+    console.log(" 	 			_______________________________");
     setTimeout(function(){ 
     	 start();
     }, 3000);
