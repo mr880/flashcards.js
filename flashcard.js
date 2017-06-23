@@ -84,9 +84,19 @@ function reset(){
 
 function exit(){
 
+	
 	process.stdout.write('\033c');
+    console.log(" 	 			_______________________________");
+    console.log("				                               ");
+    console.log("				       				           ");
+    console.log("				          Take Care!           ");
+    console.log("				                               ");
+    console.log(" 	 			_______________________________");
+    setTimeout(function(){ 
+    	 process.stdout.write('\033c');
+    }, 3000);
 
-	console.log("Take Care!");
+	
 }
 
 function newGame(){
