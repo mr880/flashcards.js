@@ -69,9 +69,43 @@ function ClozeCard(text,clozeArg){
 	};
 }
 
-function newGame(){
-	console.log("new game?");
+function reset(){
+	count = 0;
+	wins = 0;
+	i=1;					
+	j=3;
+	append = false;
+	basicArr = [];		
+	clozeArr = [];	
+	questions = 0;	
 }
+
+function exit(){
+	process.stdout.write('\033c');
+	console.log("Take Care!");
+}
+
+function newGame(){
+
+	inquirer.prompt([
+	  {
+	  	type: "list",
+      	message: "New Game?",
+      	choices: ["Yes", "No"],
+      	name: "ans"
+	  	
+	  }
+	]).then(function(info){
+		if(info.ans == "Yes"){
+			reset();
+			start();
+		}
+		else if(info.ans == "No"){
+			exit();
+		}
+	});
+}
+
 //function that prompts user for their basic quesitons recursively
 function tester(){
 
@@ -127,6 +161,9 @@ function tester(){
     		console.log("You got " + wins + " questions correct out of " + questions);
     		if(questions == wins){
     			console.log("A perfect score!");
+    			newGame();
+    		}else{
+    			newGame();
     		}
     	}
 
