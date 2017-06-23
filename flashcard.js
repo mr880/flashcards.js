@@ -162,7 +162,8 @@ function tester(){
     			else{
     				//update i by 6, the number of lines in the log.txt file with the next question
     				i+=2;
-    				console.log("Incorrect!");
+    				console.log("Incorrect! The correct answer is " + basicArr[temp+1] + ".");
+
     				tester();
     				count++;
     			}
