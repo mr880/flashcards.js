@@ -125,6 +125,9 @@ function tester(){
     	}
     	if(count == questions){
     		console.log("You got " + wins + " questions correct out of " + questions);
+    		if(questions == wins){
+    			console.log("A perfect score!");
+    		}
     	}
 
 	});
