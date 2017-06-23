@@ -44,6 +44,7 @@ function ClozeCard(text,clozeArg){
 		for(var i = 0; i<textArr.length; i++){
 			for(var j = 0; j<clozeArr.length; j++){
 				if(textArr[i] == clozeArr[j]){
+					//size of the string taken in
 					var size = clozeArr[j].length;
 					check = true;
 					textArr[i] = "";
@@ -70,6 +71,7 @@ function ClozeCard(text,clozeArg){
 }
 
 function reset(){
+
 	count = 0;
 	wins = 0;
 	i=1;					
@@ -81,7 +83,9 @@ function reset(){
 }
 
 function exit(){
+
 	process.stdout.write('\033c');
+
 	console.log("Take Care!");
 }
 
@@ -132,7 +136,6 @@ function tester(){
 				message: basicArr[i] + ": "
 				},
 				
-
     		]).then(function(info) {
     			
     			//correct answer updates wins, count and does a recursive callback
@@ -153,9 +156,7 @@ function tester(){
     				tester();
     				count++;
     			}
-    			
     		});
-
     	}
     	if(count == questions){
     		console.log("You got " + wins + " questions correct out of " + questions);
@@ -166,15 +167,8 @@ function tester(){
     			newGame();
     		}
     	}
-
 	});
-
-	
-
 }
-
-
-
 
 //called to prompt user for which type of test they would like to take
 function promptUser(){
@@ -198,7 +192,6 @@ function promptUser(){
 			tester();
 		}
 	});
-
 }
 
 function getInfoBasic(){
@@ -215,7 +208,6 @@ function getInfoBasic(){
 
     ]).then(function(info) {
       
-		
 		var basic = new BasicCard(info.front, info.back);
 		basicArr.push(basic);
 
@@ -242,9 +234,7 @@ function getInfoBasic(){
 		else{
 			promptUser();
 		}
-
 	});
-
 }
 
 function getInfoCloze(){
@@ -265,7 +255,7 @@ function getInfoCloze(){
 		
 		clozeArr.push(clozer);
 
-		console.log(info.text + " added to the cloze card");
+		console.log("Cloze Card added...");
 
 		fs.appendFile("log.txt", "\n" + clozer.partial() + "\n" + clozer.clozeArg  , function(err) {
 
@@ -278,7 +268,6 @@ function getInfoCloze(){
 		  	else {
 		  	    //console.log("Content Added!");
 		  	}
-
 		});
 
 		//recursively get more info
@@ -288,14 +277,13 @@ function getInfoCloze(){
 		else{
 			promptUser();
 		}
-
 	});
-
 }
 
 function getBasicQuestions(){
 
 	process.stdout.write('\033c');
+
 	inquirer.prompt([
 	  {
 	  	name: "number",
@@ -310,16 +298,14 @@ function getBasicQuestions(){
 	]).then(function(info){
 		questions = parseInt(info.number);
 		getInfoBasic();
-
 	});
-
-	
 }
 
 //generate info from the user to store into flashcards
 function getClozeQuestions(){
 
 	process.stdout.write('\033c');
+
 	inquirer.prompt([
 	  {
 	  	name: "number",
@@ -334,10 +320,7 @@ function getClozeQuestions(){
 	]).then(function(info){
 		questions = parseInt(info.number);
 		getInfoCloze();
-
 	});
-
-	
 }
 
 function blankSlate(){
@@ -352,7 +335,6 @@ function blankSlate(){
 			if (err) {
 		    	return console.log(err);
 		 	}
-
 		});
 	}
 
@@ -372,7 +354,6 @@ function blankSlate(){
 			getClozeQuestions();
 		}
 	});
-
 }
 
 //starter function, prompts user for how many games they would like to play
@@ -402,9 +383,22 @@ function start(){
 			blankSlate();
 		}
 	});
-
-
 }
 
-start();
+
+function initialLoad() {
+	process.stdout.write('\033c');
+    console.log(" 	 			*_________________________*");
+    console.log("				|                         |");
+    console.log("				|     Welcome to  the     |");
+    console.log("				|   Flashcard Generator   |");
+    console.log("				|  created by Mike Russo  |");
+    console.log("				*_________________________*");
+    setTimeout(function(){ 
+    	 start();
+    }, 3000);
+    
+}
+
+initialLoad();
 
