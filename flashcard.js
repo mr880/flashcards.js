@@ -367,6 +367,28 @@ function blankSlate(){
 	});
 }
 
+function areYouSure(){
+	
+	process.stdout.write('\033c');
+
+	inquirer.prompt([
+	  {
+	  	type: "list",
+      	message: "This will perminantly delete all saved questions, are you sure you want to continue?",
+      	choices: ["Yes", "No (take me back)"],
+      	name: "ans"
+	  	
+	  }
+	]).then(function(info){
+		if(info.ans == "Yes"){
+			blankSlate();
+		}
+		else if(info.ans == "No (take me back)"){
+			start();
+		}
+	});
+	
+}
 //starter function, prompts user for how many games they would like to play
 //and stores that value into var questions
 function start(){
@@ -391,7 +413,7 @@ function start(){
 			blankSlate();	//but not really
 		}
 		else if(info.ans == "Create New Questions(blank slate)"){
-			blankSlate();
+			areYouSure();
 		}
 	});
 }

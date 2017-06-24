@@ -1,11 +1,9 @@
 
-________ is the Rutgers Coding Bootcamp instructor.
-Franklin
+____ created this app.
+Mike
+Java is an ______ oriented language.
+Object
 SQL stands for __________ _____ ________
 structured query language
-Java is an ______ ________ language
-object oriented
-Rutgers is a ________ university
-research
-javascript runs in this: (two words)
-web browser
+Html is used for _____ end developing.
+front
